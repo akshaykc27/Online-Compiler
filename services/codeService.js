@@ -1,5 +1,6 @@
 const javaModule = require('../modules/javaModule');
 const nodeModule = require('../modules/nodeModule');
+const cppModule = require('../modules/cppModule');
 const logger = require('../config/logger');
 
 exports.compileCode = body => new Promise((resolve, reject) => {
@@ -20,6 +21,13 @@ exports.compileCode = body => new Promise((resolve, reject) => {
         if(lang === 'NODE'){
             logger.info(" in services if block");
             nodeModule.compileNode(code, function (data) {
+                logger.info(data)
+                resolve(data);
+            });
+        }
+        if(lang === 'C++' || lang === 'C'){
+            logger.info(" in services if block");
+            cppModule.compileCpp(code, function (data) {
                 logger.info(data)
                 resolve(data);
             });
