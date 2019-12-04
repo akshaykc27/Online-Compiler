@@ -27,12 +27,11 @@ exports.codeController = (req, res) => {
                 )
             })
             loadCode.then(codeDetails => res.status(200).send(codeDetails)).catch(err => {
-                console.log(err);
                 res.status(500).send({ "message": "something went wrong" })
             })
         }
     } catch (error) {
-        logger.warn(`ERROR: in controller ${error}`);
+        logger.error(`ERROR: in controller ${error}`);
     }
 
 
